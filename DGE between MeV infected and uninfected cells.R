@@ -100,7 +100,7 @@ find_all_markers <- FindAllMarkers(object = vgm_mev,
 top_genes_lfc_0.4 <- find_all_markers %>%
   arrange(-avg_log2FC) %>%
   group_by(cluster) %>%
-  dplyr :: filter (avg_log2FC > 0.40) %>%  # can change to any numbers
+  dplyr :: filter (avg_log2FC > 0.40) %>%  # can change to any numbers; might also want to filter pvalues
   dplyr :: slice(1:15) # can change to any numbers
 
 alldata <- ScaleData(vgm_mev, features = as.character(unique(top_genes_lfc_0.4$gene)), assay = "RNA")
